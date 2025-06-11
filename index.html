@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinanceFlow - Personal Finance Tracker</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Floating Currency Background -->
+    <div class="currency-bg">
+        <div class="currency-symbol">$</div>
+        <div class="currency-symbol">€</div>
+        <div class="currency-symbol">£</div>
+        <div class="currency-symbol">¥</div>
+        <div class="currency-symbol">₹</div>
+        <div class="currency-symbol">$</div>
+        <div class="currency-symbol">€</div>
+        <div class="currency-symbol">£</div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                <span>FinanceFlow</span>
+            </div>
+            <nav class="nav">
+                <a href="#dashboard" class="nav-link active">Dashboard</a>
+                <a href="#transactions" class="nav-link">Transactions</a>
+                <a href="#goals" class="nav-link">Goals</a>
+                <a href="#analytics" class="nav-link">Analytics</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Dashboard -->
+    <main class="main">
+        <div class="container">
+            <!-- Balance Cards -->
+            <section class="balance-section">
+                <div class="balance-card total-balance">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3>Total Balance</h3>
+                            <div class="balance-amount" id="totalBalance">$0.00</div>
+                            <div class="balance-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+5.2%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="liquid-fill" id="liquidFill"></div>
+                </div>
+
+                <div class="balance-card income-card">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-arrow-down"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3>Income</h3>
+                            <div class="balance-amount" id="totalIncome">$0.00</div>
+                            <div class="balance-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+12.5%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="coin-animation">
+                        <div class="coin"></div>
+                        <div class="coin"></div>
+                        <div class="coin"></div>
+                    </div>
+                </div>
+
+                <div class="balance-card expense-card">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-arrow-up"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3>Expenses</h3>
+                            <div class="balance-amount" id="totalExpenses">$0.00</div>
+                            <div class="balance-change negative">
+                                <i class="fas fa-arrow-down"></i>
+                                <span>-2.1%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interactive Charts Section -->
+            <section class="charts-section">
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h2>Spending Categories</h2>
+                        <div class="chart-controls">
+                            <button class="chart-btn active" data-period="week">Week</button>
+                            <button class="chart-btn" data-period="month">Month</button>
+                            <button class="chart-btn" data-period="year">Year</button>
+                        </div>
+                    </div>
+                    <div class="morphing-chart" id="morphingChart">
+                        <div class="chart-segment food" data-category="food">
+                            <div class="segment-label">Food</div>
+                            <div class="segment-amount">$450</div>
+                        </div>
+                        <div class="chart-segment transport" data-category="transport">
+                            <div class="segment-label">Transport</div>
+                            <div class="segment-amount">$280</div>
+                        </div>
+                        <div class="chart-segment entertainment" data-category="entertainment">
+                            <div class="segment-label">Entertainment</div>
+                            <div class="segment-amount">$150</div>
+                        </div>
+                        <div class="chart-segment shopping" data-category="shopping">
+                            <div class="segment-label">Shopping</div>
+                            <div class="segment-amount">$320</div>
+                        </div>
+                        <div class="chart-segment bills" data-category="bills">
+                            <div class="segment-label">Bills</div>
+                            <div class="segment-amount">$800</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Budget Goals -->
+                <div class="goals-container">
+                    <h2>Budget Goals</h2>
+                    <div class="goal-item">
+                        <div class="goal-info">
+                            <h4>Emergency Fund</h4>
+                            <span>$3,200 / $5,000</span>
+                        </div>
+                        <div class="liquid-progress">
+                            <div class="liquid-wave" style="--progress: 64%"></div>
+                            <span class="progress-text">64%</span>
+                        </div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-info">
+                            <h4>Vacation</h4>
+                            <span>$1,800 / $3,000</span>
+                        </div>
+                        <div class="liquid-progress">
+                            <div class="liquid-wave" style="--progress: 60%"></div>
+                            <span class="progress-text">60%</span>
+                        </div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-info">
+                            <h4>New Car</h4>
+                            <span>$8,500 / $15,000</span>
+                        </div>
+                        <div class="liquid-progress">
+                            <div class="liquid-wave" style="--progress: 57%"></div>
+                            <span class="progress-text">57%</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Transaction Form -->
+            <section class="transaction-section">
+                <div class="form-container">
+                    <h2>Add Transaction</h2>
+                    <form class="transaction-form" id="transactionForm">
+                        <div class="form-group">
+                            <label for="amount">Amount</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-dollar-sign"></i>
+                                <input type="number" id="amount" placeholder="0.00" step="0.01" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-edit"></i>
+                                <input type="text" id="description" placeholder="What was this for?" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-tags"></i>
+                                <select id="category" required>
+                                    <option value="">Select Category</option>
+                                    <option value="food">🍔 Food</option>
+                                    <option value="transport">🚗 Transport</option>
+                                    <option value="entertainment">🎬 Entertainment</option>
+                                    <option value="shopping">🛍️ Shopping</option>
+                                    <option value="bills">💡 Bills</option>
+                                    <option value="income">💰 Income</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Type</label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="type" value="expense" checked>
+                                    <span class="radio-custom expense"></span>
+                                    Expense
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="type" value="income">
+                                    <span class="radio-custom income"></span>
+                                    Income
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <span>Add Transaction</span>
+                            <div class="btn-animation"></div>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Recent Transactions -->
+                <div class="transactions-list">
+                    <h2>Recent Transactions</h2>
+                    <div class="transaction-items" id="transactionsList">
+                        <!-- Transactions will be added here dynamically -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="index.js"></script>
+</body>
+</html>
